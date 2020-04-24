@@ -1,18 +1,18 @@
 use crate::direction::Direction;
 
-const GRID_DIMENSIONS: GridPoint = GridPoint::new(20, 20);
-
 #[derive(Debug, Clone, Copy)]
 pub struct GridPoint(usize, usize);
 
 impl GridPoint {
+    const DIMENSIONS: GridPoint = GridPoint::new(20, 20);
+
     pub const fn new(x: usize, y: usize) -> GridPoint {
         GridPoint(x, y)
     }
 
     pub fn move_forward(self, direction: Direction) -> GridPoint {
         let GridPoint(mut x, mut y) = self;
-        let GridPoint(max_x, max_y) = GRID_DIMENSIONS;
+        let GridPoint(max_x, max_y) = GridPoint::DIMENSIONS;
 
         match direction {
             Direction::N => {
@@ -41,7 +41,7 @@ impl GridPoint {
 
     pub fn move_backwards(self, direction: Direction) -> GridPoint {
         let GridPoint(mut x, mut y) = self;
-        let GridPoint(max_x, max_y) = GRID_DIMENSIONS;
+        let GridPoint(max_x, max_y) = GridPoint::DIMENSIONS;
 
         match direction {
             Direction::N => {
